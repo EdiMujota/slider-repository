@@ -55,3 +55,31 @@
 
   stopSlideshow();
 </script>
+
+<style>
+  .slideshow {
+    width: 750px;
+    height: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slideshow img.active {
+    opacity: 1;
+  }
+  
+  .h1 {
+    margin-left: 880px;
+  }
+</style>
