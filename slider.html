@@ -1,0 +1,57 @@
+<h1 class="h1">SlideShow</h1>
+<div class="slideshow">
+  <img src="1.jpg" alt="img1" class="active" />
+  <img src="2.jpg" alt="img2" />
+  <img src="3.jpg" alt="img3" />
+  <img src="4.jpg" alt="img4" />
+</div>
+
+<script>
+  const slideshow = document.querySelector(".slideshow");
+  const slides = slideshow.querySelectorAll("img");
+  const slideCount = slides.length;
+  let currentIndex = 0;
+  let intervalId;
+
+  function startSlideshow() {
+    intervalId = setInterval(() => {
+      currentIndex++;
+      if (currentIndex === slideCount) {
+        currentIndex = 0;
+      }
+      updateSlides();
+    }, 1000);
+  }
+
+  function stopSlideshow() {
+    clearInterval(intervalId);
+  }
+
+  function updateSlides() {
+    slides.forEach((slide, index) => {
+      if (index === currentIndex) {
+        slide.classList.add("active");
+      } else {
+        slide.classList.remove("active");
+      }
+    });
+  }
+
+  slideshow.addEventListener("mouseenter", () => {
+    startSlideshow();
+  });
+
+  slideshow.addEventListener("mouseleave", () => {
+    stopSlideshow();
+  });
+
+  slides.forEach((slide, index) => {
+    slide.addEventListener("click", () => {
+      currentIndex = index;
+      updateSlides();
+      stopSlideshow();
+    });
+  });
+
+  stopSlideshow();
+</script>
